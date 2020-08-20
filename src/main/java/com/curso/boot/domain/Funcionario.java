@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -21,13 +24,18 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @Table(name = "FUNCIONARIOS")
 public class Funcionario extends AbstractEntity<Long> {
 
+	@NotBlank(message = "Informe um nome válido. O Nome do funcionario deve ter entre 3  e 60 caracteres.")
+	//@Size(min = 3, max = 60, message = "O Nome do funcionario deve ter entre {min}  e {max} caracteres.")
 	@Column(nullable = false, unique = true)
 	private String nome;
 	
+	@NotNull(message = "Informe um salário válido.")
+	//@Size(min = 3, max = 60, message = "O Nome do departamento deve ter entre {min}  e {max} caracteres.")
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private BigDecimal salario;
 	
+	@NotNull(message= "Obrigatório inserir data de entrada.")
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name= "data_entrada", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrada;
@@ -36,10 +44,12 @@ public class Funcionario extends AbstractEntity<Long> {
 	@Column(name = "data_saida", columnDefinition = "DATE")
 	private LocalDate dataSaida;
 	
+	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;
 	
+	@NotNull(message = "Selecione o Cargo relativo ao funcionário.")
 	@ManyToOne
 	@JoinColumn(name = "cargo_id_fk")
 	private Cargo cargo;

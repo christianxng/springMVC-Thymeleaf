@@ -1,28 +1,36 @@
 package com.curso.boot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "ENDERECOS")
 public class Endereco extends AbstractEntity<Long> {
 
+	@NotBlank(message = "Informe um logradouro válido.") 
 	@Column(nullable = false)
 	private String logradouro;
 	
+	@NotBlank(message = "Informe um bairro válido.") 
 	@Column(nullable = false)
 	private String bairro;
 	
+	@NotBlank(message = "Informe uma cidade válida.") 
 	@Column(nullable = false)
 	private String cidade;
 	
+	@NotNull(message = "Informe um etsado (UF) válido.") 
 	@Column(nullable = false, length = 2)
 	@Enumerated(EnumType.STRING)
 	private UF uf;
 	
+	@NotNull(message = "Informe um CEP válido.") 
 	@Column(nullable = false, length = 9)
 	private String cep;
 	
+	@NotNull(message = "Informe um número válido.") 
 	@Column(nullable = false, length = 5)
 	private Integer numero;
 	
