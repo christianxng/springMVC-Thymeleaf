@@ -23,6 +23,16 @@ Sistema básico de gerenciamento de departamentos, cargos e funcionários de uma
 - Cada funcionário deverá ser cadastrado com algum cargo existente. 
 - Formulários devem ser cadastrados da maneira correta. Caso não respeite as regras de validação, nenhum será salvo ou editado. 
 
+### Sistemas
+
+- Adição
+- Edição
+- Exclusão
+- Busca
+** (Funcionário) por: 
+- nome (pode ser partes de um nome)
+- cargo
+- datas de admissão e/ou demissão.
 
 
 ### A estudar
