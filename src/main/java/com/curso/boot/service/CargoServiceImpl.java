@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.curso.boot.dao.CargoDao;
 import com.curso.boot.domain.Cargo;
-import com.curso.boot.domain.Funcionario;
 
 @Service @Transactional(readOnly = false)
 public class CargoServiceImpl implements CargoService {

@@ -20,8 +20,6 @@ import com.curso.boot.domain.Departamento;
 import com.curso.boot.service.CargoService;
 import com.curso.boot.service.DepartamentoService;
 
-import groovy.lang.Binding;
-
 @Controller
 @RequestMapping("/cargos")
 public class CargoController {
@@ -57,7 +55,7 @@ public class CargoController {
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
 		
 		model.addAttribute("cargo", serviceCargo.buscarPorId(id));
-		return "/cargo/cadastro";
+		return "cargo/cadastro";
 	}
 	
 	@PostMapping("/editar")

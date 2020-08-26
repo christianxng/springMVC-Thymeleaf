@@ -21,12 +21,12 @@ public class Endereco extends AbstractEntity<Long> {
 	@Column(nullable = false)
 	private String cidade;
 	
-	@NotNull(message = "Informe um etsado (UF) válido.") 
+	@NotNull(message = "Informe um estado (UF) válido.") 
 	@Column(nullable = false, length = 2)
 	@Enumerated(EnumType.STRING)
 	private UF uf;
 	
-	@NotNull(message = "Informe um CEP válido.") 
+	@NotBlank(message = "Informe um CEP válido.") 
 	@Column(nullable = false, length = 9)
 	private String cep;
 	
